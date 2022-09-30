@@ -3,6 +3,10 @@
 @use "typography" as *;
 @use "sizes" as *;
 
+@function blackShadow($al) {
+  @return hsl(0 0% 0% / $al);
+}
+
 @function clr($color, $shade) {
   @if map.has-key($colors, $color, $shade) {
     @return map.get($colors, $color, $shade);
