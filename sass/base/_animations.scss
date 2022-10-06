@@ -10,7 +10,11 @@
     @include hide;
 }
 
-.delete {
+.mount {
+    display: block !important;
+}
+
+.umount {
     @include delete;
 }
 
