@@ -13,6 +13,11 @@
   @include box(100%);
 }
 
+@mixin viewportBox {
+  width: 100vw;
+  height: 100vh;
+}
+
 @mixin inheritedBox {
   width: inherit;
   height: inherit;
@@ -30,8 +35,10 @@
 
 // IMAGES
 @mixin responsiveImage {
+  display: block;
   object-fit: cover;
-  min-height: 100%;
+  max-height: 100%;
+  max-width: 100%;
 }
 
 // BORDERS
@@ -52,7 +59,7 @@
 
 @mixin absCenter {
   @include absTopLeft(50%, 50%);
-  translate: -50%, -50%;
+  translate: -50% -50%;
 }
 
 @mixin fixCenter {
@@ -61,26 +68,34 @@
 }
 
 // ALIGNMENT
-@mixin marginCenter {
+@mixin marginCenterH {
   margin: 0 auto;
+}
+
+@mixin marginCenterV {
+  margin: auto 0;
+}
+
+@mixin centerAlign {
+  place-items: center;
+  place-content: center;
 }
 
 @mixin flexCenter {
   display: flex;
   flex-direction: row;
-  place-items: center;
-  place-content: center;
+  @include centerAlign;
 }
 
 @mixin flexCenterColumn {
-  @include flexCenter;
+  display: flex;
   flex-direction: column;
+  @include centerAlign;
 }
 
 @mixin gridCenter {
   display: grid;
-  place-items: center;
-  place-content: center;
+  @include centerAlign;
 }
 
 // FORMS 
@@ -114,11 +129,6 @@
 
 @mixin fadeAnimation($name) {
   animation: $name 1s linear forwards;
-}
-
-// Removes the element from the DOM
-@mixin delete {
-  display: none !important;
 }
 
 // MEDIA QUERY MANAGER
