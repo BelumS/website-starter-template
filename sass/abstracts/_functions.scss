@@ -30,3 +30,11 @@
     @error '$sizes does not have that size!';
   }
 }
+
+@function rem($number) {
+  @if unitless($number) {
+    $default-one-rem-in-pixel: 16;
+    @return math.div($number, $default-one-rem-in-pixel) * 1rem;
+  }
+  @error "The number #{$number} doesn't have any unit"
+}

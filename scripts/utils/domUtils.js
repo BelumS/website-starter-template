@@ -1,7 +1,7 @@
 /**
- * Selects the `HTMLElement` based on the given query
+ * Selects the `Element` based on the given query
  * @param {string} query the query
- * @returns an `HTMLElement` or `null`
+ * @returns an `Element` or `null`
  */
  export const qs = (query) => document.querySelector(query);
 

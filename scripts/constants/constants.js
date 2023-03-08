@@ -1,4 +1,3 @@
-export const MOUNT_CLASS = "mount";
 export const UNMOUNT_CLASS = "unmount";
 
 export const SHOW_CLASS = "show";

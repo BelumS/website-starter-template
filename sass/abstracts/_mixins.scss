@@ -9,16 +9,16 @@
   height: $val;
 };
 
-@mixin fullBox {
+@mixin full-box {
   @include box(100%);
 }
 
-@mixin viewportBox {
+@mixin viewport-box {
   width: 100vw;
   height: 100vh;
 }
 
-@mixin inheritedBox {
+@mixin inherited-box {
   width: inherit;
   height: inherit;
 }
@@ -29,12 +29,12 @@
   color: $textColor;
 }
 
-@mixin boxShadowBlack($x, $y, $blur, $spread, $al) {
+@mixin box-shadow-black($x, $y, $blur, $spread, $al) {
   box-shadow: $x $y $blur $spread blackShadow($al);
 }
 
 // IMAGES
-@mixin responsiveImage {
+@mixin responsive-image {
   display: block;
   object-fit: cover;
   max-height: 100%;
@@ -42,78 +42,78 @@
 }
 
 // BORDERS
-@mixin circleRadius {
+@mixin circle-radius {
   border-radius: 50%;
 }
 
 // POSITIONING
-@mixin absBehind {
+@mixin abs-behind {
   @include absTopLeft(0, 0);
 }
 
-@mixin absTopLeft($top, $left) {
+@mixin abs-top-left($top, $left) {
   position: absolute;
   top: $top;
   left: $left;
 }
 
-@mixin absCenter {
+@mixin abs-center {
   @include absTopLeft(50%, 50%);
   translate: -50% -50%;
 }
 
-@mixin fixCenter {
+@mixin fix-center {
   position: fixed;
   inset: 0;
 }
 
 // ALIGNMENT
-@mixin marginCenterH {
+@mixin margin-center-h {
   margin: 0 auto;
 }
 
-@mixin marginCenterV {
+@mixin margin-center-v {
   margin: auto 0;
 }
 
-@mixin centerAlign {
+@mixin center-align {
   place-items: center;
   place-content: center;
 }
 
-@mixin flexCenter {
+@mixin flex-center {
   display: flex;
   flex-direction: row;
-  @include centerAlign;
+  @include center-align;
 }
 
-@mixin flexCenterColumn {
+@mixin flex-center-column {
   display: flex;
   flex-direction: column;
-  @include centerAlign;
+  @include center-align;
 }
 
-@mixin gridCenter {
+@mixin grid-center {
   display: grid;
-  @include centerAlign;
+  @include center-align;
 }
 
 // FORMS 
-@mixin formControlReset {
+@mixin form-control-reset {
   border: none;
   outline: none;
 }
 
 // ANIMATIONS
-@mixin defaultTransition {
+@mixin default-transition {
   transition: all 200ms;
 }
 
-@mixin defaultTransitionTime($time) {
+@mixin default-transition-time($time) {
   transition: all $time;
 }
 
-@mixin customTransition($prop, $time) {
+@mixin custom-transition($prop, $time) {
   transition: $prop $time;
 }
 
@@ -127,26 +127,42 @@
   visibility: visible;
 }
 
-@mixin fadeAnimation($name) {
+@mixin fade-animation($name) {
   animation: $name 1s linear forwards;
+}
+
+@mixin prefers-motion() {
+  @media only screen and (prefers-reduced-motion: no-preference) {
+    @content;
+  }
+}
+
+// EVENTS
+@mixin on-event {
+  &:is(:hover, :active) { @content; }
 }
 
 // MEDIA QUERY MANAGER
 @mixin mq($size) {
   @if map.has-key($breakpoints, $size) {
     $breakpoint: map-get($breakpoints, $size);
-    @media screen and (min-width: $breakpoint) {
+    @media only screen and (min-width: $breakpoint) {
       @content;
     }
   } @else if meta.type-of($size) == number {
     @if math.is-unitless($size) {
       @error 'when using a number with @mq() make sure to include a unit';
     } @else {
-      @media screen and (min-width: $size) {
+      @media only screen and (min-width: $size) {
         @content;
       }
     }
   } @else {
     @error 'the keyword #{$size} is not in the $breakpoints map';
   }
+}
+
+// Desktop-First Queries
+@mixin mqd($size) {
+  @media only screen and (max-width: map-get($breakpoints, $size)) { @content; }
 }
