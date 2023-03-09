@@ -2,6 +2,7 @@
 @use "sass:math";
 @use "sass:map";
 @use "breakpoints" as *;
+@use "functions" as *;
 
 //DIMENSIONS
 @mixin box($val) {
@@ -30,7 +31,7 @@
 }
 
 @mixin box-shadow-black($x, $y, $blur, $spread, $al) {
-  box-shadow: $x $y $blur $spread blackShadow($al);
+  box-shadow: $x $y $blur $spread black-shadow($al);
 }
 
 // IMAGES
@@ -102,6 +103,12 @@
 @mixin form-control-reset {
   border: none;
   outline: none;
+}
+
+// BUTTONS
+@mixin btn-outline {
+  @include form-control-reset;
+  outline-color: transparent;
 }
 
 // ANIMATIONS

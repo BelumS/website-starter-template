@@ -19,14 +19,14 @@
 }
 
 .fade-out {
-    @include fadeAnimation(fadeOut);
+    @include fade-animation(fade-out);
 }
 
 .fade-in {
-    @include fadeAnimation(fadeIn);
+    @include fade-animation(fade-in);
 }
 
-@keyframes fadeOut {
+@keyframes fade-out {
     from {
         opacity: 1;
     }
@@ -36,7 +36,7 @@
     }
 }
 
-@keyframes fadeIn {
+@keyframes fade-in {
     from {
         opacity: 0;
     }

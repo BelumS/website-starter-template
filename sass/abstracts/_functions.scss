@@ -3,7 +3,7 @@
 @use "typography" as *;
 @use "sizes" as *;
 
-@function blackShadow($al) {
+@function black-shadow($al) {
   @return hsla(0, 0%, 0%, $al);
 }
 
