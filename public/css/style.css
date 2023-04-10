@@ -2,12 +2,12 @@
 *,
 *::before,
 *::after {
+  margin: 0;
+  padding: 0;
   box-sizing: border-box;
 }
 
 * {
-  margin: 0;
-  padding: 0;
   font: inherit;
 }
 
@@ -36,7 +36,7 @@ body {
   visibility: hidden;
 }
 
-.delete {
+.unmount {
   display: none !important;
 }
 
@@ -45,14 +45,14 @@ body {
 }
 
 .fade-out {
-  animation: fadeOut 1s linear forwards;
+  animation: fade-out 1s linear forwards;
 }
 
 .fade-in {
-  animation: fadeIn 1s linear forwards;
+  animation: fade-in 1s linear forwards;
 }
 
-@keyframes fadeOut {
+@keyframes fade-out {
   from {
     opacity: 1;
   }
@@ -60,7 +60,7 @@ body {
     opacity: 0;
   }
 }
-@keyframes fadeIn {
+@keyframes fade-in {
   from {
     opacity: 0;
   }
