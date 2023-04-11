@@ -149,6 +149,10 @@
   &:active { @content; }
 }
 
+@mixin on-hover {
+  &:is(:hover, :focus-visible) { @content; }
+}
+
 @mixin on-event {
   &:is(:hover, :active) { @content; }
 }
